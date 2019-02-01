@@ -1,3 +1,4 @@
+SHELL := /bin/bash # Use bash syntax
 HANDLER ?= main
 PACKAGE ?= $(HANDLER)
 GOPATH  ?= $(HOME)/go

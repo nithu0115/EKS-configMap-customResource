@@ -1,11 +1,11 @@
-##EKS-configMap-customResource
+### EKS-configMap-customResource
 
 EKS-configMap-customResource is a AWS Lambda backed custom resource to create or update config map with Node Instance Role which would automatically allow worker nodes to join the cluster. 
 
-###Pre-Requisites###
+#### Pre-Requisites
 
 1) git clone to check out the repository to local and cd to the directory
-2) Edit Makefile and update S3Bucket variable:
+2) Edit Makefile and update **S3Bucket** variable:
 ```S3Bucket ?= eks-lambda-configmap-customresource```
 
 3) make all
