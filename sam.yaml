@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  EKS-configMap-customResource
+  
+  SAM Template for EKS-configMap-customResource
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 30
+
+Resources:
+  MyFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: ./main.zip
+      Handler: main
+      Runtime: go1.x
+      Policies:
+        - AWSLambdaBasicExecutionRole # Managed Policy
+        - Version: '2012-10-17' # Policy Document
+          Statement:
+            - Effect: Allow
+              Action:
+                - eks:Describe*
+                - eks:List*
+		- eks:Update*
+              Resource: '*'
+
+Outputs:
+  MyFunction:
+    Description: "Lambda function Arn"
+    Value: !GetAtt MyFunction.Arn
+
+  MyFunctionIamRole:
+    Description: "Lambda function IAM role Arn"
+    Value: !GetAtt MyFunctionRole.Arn
