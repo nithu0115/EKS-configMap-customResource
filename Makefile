@@ -6,7 +6,7 @@ GOOSDEV	?= darwin
 GOARCH  ?= amd64
 
 # Modify S3 bucket
-S3TMPBUCKET	?= eks-lambda-configMap-customResource
+S3Bucket        ?= eks-lambda-configmap-customresource
 STACKNAME	?= eks-lambda-configMap-customResource
 
 WORKDIR = $(CURDIR:$(GOPATH)%=/go%)
@@ -38,8 +38,8 @@ clean:
 
 pack:
 	@echo "Sam packing..."
-	@echo "Running aws cloudformation package --template-file sam.yaml --s3-bucket $(S3TMPBUCKET) --output-template-file sam-packaged.yaml"
-	@aws cloudformation package --template-file sam.yaml --s3-bucket $(S3TMPBUCKET) --output-template-file sam-packaged.yaml
+	@echo "Running aws cloudformation package --template-file sam.yaml --s3-bucket $(S3Bucket) --output-template-file sam-packaged.yaml"
+	@aws cloudformation package --template-file sam.yaml --s3-bucket $(S3Bucket) --output-template-file sam-packaged.yaml
 
 deploy:
 	@echo "Sam deploying CFN stack/changeSets ..."

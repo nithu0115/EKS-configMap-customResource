@@ -25,7 +25,7 @@ Resources:
               Action:
                 - eks:Describe*
                 - eks:List*
-		- eks:Update*
+                - eks:Update*
               Resource: '*'
 
 Outputs:
