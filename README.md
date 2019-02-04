@@ -8,7 +8,8 @@ EKS-configMap-customResource is a AWS Lambda backed custom resource to create or
 2) Edit Makefile and update **S3Bucket** variable:
 ```S3Bucket ?= eks-lambda-configmap-customresource```
 
-3) make all
+3) make all (_Note: You will need to install dep package: https://golang.github.io/dep/docs/installation.html before running make all command_) 
+
 
 ```
 make all
