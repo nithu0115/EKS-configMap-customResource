@@ -21,7 +21,7 @@ Running aws cloudformation package --template-file sam.yaml --s3-bucket eks-lamb
 Uploading to 9ab49ec8a813c54f7720685f8175fb67  8075063 / 8075063.0  (100.00%)
 Successfully packaged artifacts and wrote output template to file sam-packaged.yaml.
 Execute the following command to deploy the packaged template
-aws cloudformation deploy --template-file /Users/nithmu/go/src/github.com/aws/eks_saver/sam-packaged.yaml --stack-name <YOUR STACK NAME>
+aws cloudformation deploy --template-file EKS-configMap-customResource/sam-packaged.yaml --stack-name <YOUR STACK NAME>
 Sam deploying CFN stack/changeSets ...
 
 Waiting for changeset to be created..
@@ -29,4 +29,9 @@ Waiting for stack create/update to complete
 Successfully created/updated stack - eks-lambda-configMap-customResource
 ```
 
+#### Installation
 
+1) Create AWS EKS Cluster using CloudFormation
+
+```
+aws cloudformation deploy --template-file  --stack-name $(STACKNAME)

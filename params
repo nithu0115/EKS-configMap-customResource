@@ -1,0 +1,15 @@
+BootstrapArguments		
+ClusterControlPlaneSecurityGroup	sg-2c397d59,sg-2d7d3958	
+ClusterControlPlaneSubnets	subnet-fa07c5b2,subnet-0c58a75cb936976b7	
+ClusterName	test1	
+ClusterServiceIAMRoleARN	arn:aws:iam::364336798170:role/EKS-Service-Role	
+KeyName	Nithish	
+NodeAutoScalingGroupDesiredCapacity	1	
+NodeAutoScalingGroupMaxSize	2	
+NodeAutoScalingGroupMinSize	1	
+NodeImageId	ami-0c5b63ec54dd3fc38	
+NodeInstanceType	t3.medium	
+NodeVolumeSize	20	
+VpcID	vpc-a9a192cf	
+WorkerNodesSubnets	subnet-0f799601453e0ea07,subnet-fa07c5b2,subnet-0c58a75cb936976b7	
+

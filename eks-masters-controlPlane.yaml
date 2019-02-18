@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Deploys the EKS Cluster control plane"
+
+Parameters:
+  ClusterControlPlaneSecurityGroup:
+    Type: List<AWS::EC2::SecurityGroup::Id>
+  ClusterControlPlaneSubnets:
+    Type: List<AWS::EC2::Subnet::Id>
+  ClusterServiceIAMRoleARN:
+    Type: String
+  ClusterName:
+    Description: Please provide an unique identifier for your EKS Cluster name.
+    Type: String
+  KubernetesVersion:
+    Type: String
+    AllowedValues: [ "1.11", "1.10" ]
+
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      -
+        Label:
+          default: "Master Network Configuration"
+        Parameters:
+          - ClusterName
+          - ClusterControlPlaneSubnets
+          - ClusterServiceIAMRoleARN
+          - ClusterControlPlaneSecurityGroup
+
+Resources:
+  EKS:
+    Type: "AWS::EKS::Cluster"
+    Properties:
+      ResourcesVpcConfig:
+        SecurityGroupIds: !Ref SecurityGroupIds
+        SubnetIds: !Ref SubnetIds
+      RoleArn: !Ref RoleArn
+      Version: !Ref KubernetesVersion
+Outputs:
+  EksArn:
+    Value: !GetAtt EKS.Arn
+  EKSName:
+    Value: !Ref EKS
